@@ -110,11 +110,33 @@ em{font-style:italic}
   background:radial-gradient(72% 58% at 50% 42%,transparent 40%,rgba(7,23,38,.72) 100%);
 }
 .portada .marco{position:relative;z-index:1;display:flex;flex-direction:column;
-  align-items:center;gap:30px}
-.sello{width:min(252px,42vw);filter:drop-shadow(0 22px 54px rgba(0,0,0,.5))}
-.portada h1{color:var(--crema-viva);max-width:14ch}
+  align-items:center;gap:26px}
+/* El sello va CHICO. Es una marca de taller, no un cartel: grande se ve
+   recargado y su ornamento fino se convierte en ruido. Manda la tipografía. */
+.sello{width:clamp(86px,9vw,116px);filter:drop-shadow(0 10px 26px rgba(0,0,0,.45))}
+.portada h1{color:var(--crema-viva);max-width:13ch}
 .portada h1 em{color:var(--oro-luz)}
 .bajada{color:var(--humo);font-size:clamp(15px,1.7vw,18px);max-width:46ch}
+
+/* Entrada del hero: los elementos suben escalonados al cargar. Es lo primero
+   que ve el visitante y lo que decide si el sitio se siente caro. */
+.portada .marco > *{opacity:0;transform:translateY(26px)}
+.js-listo .portada.entra .marco > *{
+  animation:sube-hero .95s cubic-bezier(.16,1,.3,1) forwards;
+}
+.js-listo .portada.entra .marco > *:nth-child(1){animation-delay:.05s}
+.js-listo .portada.entra .marco > *:nth-child(2){animation-delay:.20s}
+.js-listo .portada.entra .marco > *:nth-child(3){animation-delay:.32s}
+.js-listo .portada.entra .marco > *:nth-child(4){animation-delay:.50s}
+.js-listo .portada.entra .marco > *:nth-child(5){animation-delay:.60s}
+@keyframes sube-hero{to{opacity:1;transform:none}}
+html:not(.js-listo) .portada .marco > *{opacity:1;transform:none}
+
+/* El filete del hero se dibuja en vez de aparecer */
+.js-listo .portada.entra .filete{transform-origin:50% 50%;
+  animation:sube-hero .95s cubic-bezier(.16,1,.3,1) .50s forwards,
+            traza 1.1s cubic-bezier(.16,1,.3,1) .55s forwards}
+@keyframes traza{from{clip-path:inset(0 50% 0 50%)}to{clip-path:inset(0)}}
 
 .filete{width:78px;height:1px;background:var(--oro);opacity:.72}
 
@@ -202,18 +224,58 @@ section{padding:clamp(84px,11vw,150px) 0}
 footer{background:var(--marino-hondo);color:rgba(245,240,228,.42);
   padding:42px 0;font-size:12.5px;text-align:center}
 
-/* ── REVELADOS ────────────────────────────────────────────────
-   Estado inicial. Si el visitante pidió menos movimiento, o si el
-   JavaScript no carga, todo queda visible: la animación decora, no
-   sostiene el contenido. */
+/* ── COREOGRAFÍA ──────────────────────────────────────────────
+   Si el visitante pidió menos movimiento, o si el JavaScript no carga,
+   todo queda visible: la animación decora, no sostiene el contenido. */
 .sube{opacity:0;transform:translateY(34px)}
 .js-listo .sube{transition:opacity .9s cubic-bezier(.16,1,.3,1),
                            transform .9s cubic-bezier(.16,1,.3,1)}
 .sube.visible{opacity:1;transform:none}
+
+/* Los tres actos se FIJAN mientras se leen. El año de fondo se agranda y se
+   desvanece con el avance del scroll, y el texto entra escalonado. Es lo que
+   convierte tres pantallas de texto en una secuencia. */
+.acto{position:sticky;top:0}
+.acto .anio{
+  transition:transform 1.4s cubic-bezier(.16,1,.3,1),opacity 1.4s ease;
+  transform:scale(.82);
+}
+.acto.visible .anio{transform:scale(1);opacity:.3}
+.js-listo .acto .angosto > *{opacity:0;transform:translateY(22px);
+  transition:opacity .85s cubic-bezier(.16,1,.3,1),
+             transform .85s cubic-bezier(.16,1,.3,1)}
+.js-listo .acto.visible .angosto > *{opacity:1;transform:none}
+.js-listo .acto.visible .angosto > *:nth-child(2){transition-delay:.10s}
+.js-listo .acto.visible .angosto > *:nth-child(3){transition-delay:.20s}
+.js-listo .acto.visible .angosto > *:nth-child(4){transition-delay:.32s}
+.js-listo .acto.visible .angosto > *:nth-child(5){transition-delay:.42s}
+
+/* Parallax en las fotos: la imagen se mueve más lento que la página. Con tres
+   fotografías, esto es lo que les da presencia sin repetirlas. */
+figure{overflow:hidden}
+figure img{will-change:transform;transform:scale(1.14) translateY(var(--par,0))}
+
+/* La sentencia del Año 10 se revela por palabra */
+.sentencia .pal{display:inline-block;opacity:0;transform:translateY(18px);
+  transition:opacity .7s cubic-bezier(.16,1,.3,1),
+             transform .7s cubic-bezier(.16,1,.3,1)}
+.visible .sentencia .pal,.sentencia.visible .pal{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){
   .sube{opacity:1!important;transform:none!important;transition:none!important}
+  .portada .marco > *{opacity:1!important;transform:none!important;animation:none!important}
+  .acto .angosto > *,.sentencia .pal{opacity:1!important;transform:none!important}
+  figure img{transform:none!important}
   html{scroll-behavior:auto}
 }
+
+/* Red de seguridad: si a los dos segundos algo no se revelo, se muestra
+   igual. Vale para pestañas en segundo plano, animaciones bloqueadas o
+   cualquier cosa que no previmos. Un sitio sin animacion se puede leer; uno
+   en blanco no. */
+.revelar-todo .sube,
+.revelar-todo .portada .marco > *,
+.revelar-todo .acto .angosto > *,
+.revelar-todo .sentencia .pal{opacity:1!important;transform:none!important}
 </style>
 </head>
 <body>
@@ -392,15 +454,87 @@ footer{background:var(--marino-hondo);color:rgba(245,240,228,.42);
   if (quieto || !('IntersectionObserver' in window)) return;
 
   document.documentElement.classList.add('js-listo');
+
+  /* 1. Entrada del hero, escalonada.
+
+     Se activa DIRECTO y no dentro de requestAnimationFrame. Con rAF el
+     titular y el sello quedaban en opacidad 0 cuando la pestaña no estaba
+     pintando —una pestaña en segundo plano no ejecuta rAF—, y la portada
+     abría en blanco. Que el contenido dependa de que una animación llegue a
+     correr es un error: la animación decora, no muestra.
+
+     Y por si algo falla igual, a los 2 segundos se revela todo a la fuerza.
+     Un sitio sin animación es aceptable; uno en blanco no. */
+  var portada = document.querySelector('.portada');
+  if (portada) portada.classList.add('entra');
+  setTimeout(function () {
+    document.documentElement.classList.add('revelar-todo');
+  }, 2000);
+
+  /* 2. La sentencia del Año 10 se parte en palabras para revelarla una a una.
+        Se hace desde JS y no en el HTML para que el texto siga siendo texto
+        plano para Google y para un lector de pantalla. */
+  var sent = document.querySelector('.sentencia');
+  if (sent) {
+    var trozos = [];
+    sent.childNodes.forEach(function (n) {
+      var clase = n.nodeType === 1 ? n.className : '';
+      (n.textContent || '').split(/\s+/).filter(Boolean).forEach(function (p) {
+        trozos.push({ p: p, c: clase });
+      });
+    });
+    sent.textContent = '';
+    trozos.forEach(function (t, i) {
+      var s = document.createElement('span');
+      s.className = 'pal' + (t.c ? ' ' + t.c : '');
+      s.textContent = t.p + ' ';
+      s.style.transitionDelay = (i * 0.045) + 's';
+      sent.appendChild(s);
+    });
+  }
+
+  /* 3. Revelados al entrar en pantalla. Los actos NO se sueltan: entran y
+        salen, porque están fijados y el visitante los cruza en los dos
+        sentidos. El resto se revela una vez y se deja de observar. */
   var ojo = new IntersectionObserver(function (entradas) {
     entradas.forEach(function (e) {
-      if (!e.isIntersecting) return;
-      e.target.classList.add('visible');
-      ojo.unobserve(e.target);            // se revela una vez y se suelta
+      var acto = e.target.classList.contains('acto');
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        if (!acto) ojo.unobserve(e.target);
+      } else if (acto) {
+        e.target.classList.remove('visible');
+      }
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+  }, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
 
-  document.querySelectorAll('.sube').forEach(function (el) { ojo.observe(el); });
+  document.querySelectorAll('.sube, .acto').forEach(function (el) {
+    ojo.observe(el);
+  });
+
+  /* 4. Parallax de las fotografías. Se calcula en el bucle de pintado y no en
+        el evento de scroll: así el navegador lo agenda con el repintado en
+        vez de dispararlo cientos de veces por segundo. Solo se tocan las
+        figuras que están en pantalla. */
+  var figs = [].slice.call(document.querySelectorAll('figure img'));
+  var pendiente = false;
+  function mover() {
+    pendiente = false;
+    var alto = window.innerHeight;
+    figs.forEach(function (im) {
+      var r = im.getBoundingClientRect();
+      if (r.bottom < -100 || r.top > alto + 100) return;
+      // -1 a 1 según dónde está la figura respecto del centro de pantalla.
+      var t = (r.top + r.height / 2 - alto / 2) / alto;
+      im.style.setProperty('--par', (t * -34).toFixed(1) + 'px');
+    });
+  }
+  function pedir() {
+    if (!pendiente) { pendiente = true; requestAnimationFrame(mover); }
+  }
+  addEventListener('scroll', pedir, { passive: true });
+  addEventListener('resize', pedir, { passive: true });
+  mover();
 })();
 </script>
 
