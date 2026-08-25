@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Cocinas integrales en Caborca · Madera sólida | Cocinas El Patrón</title>
+<meta name="description" content="Cocinas integrales fabricadas a medida en madera 100% sólida en Heroica Caborca, Sonora. 20 años de ebanistería, entrega e instalación en 4 a 6 semanas. Encino, tzalam, cedro, banak y pino.">
+<link rel="canonical" href="https://www.cocinaselpatronsonora.com.mx/">
+<meta name="theme-color" content="#0C243C">
+<link rel="icon" href="img/sello-chico.png">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Cocinas El Patrón · Maestros artesanos en Caborca">
+<meta property="og:description" content="Cocinas integrales en madera 100% sólida. A los diez años se lijan y se rebarnizan; no se botan.">
+<meta property="og:image" content="img/cocina-general.jpg">
+<meta property="og:locale" content="es_MX">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap">
+
+<!-- Negocio local: lo que Google necesita para mostrarlo en búsquedas de
+     "cocinas integrales Caborca", que es su búsqueda real. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HomeAndConstructionBusiness",
+  "name": "Cocinas El Patrón",
+  "description": "Fabricación artesanal de cocinas integrales en madera sólida",
+  "telephone": "+526371254615",
+  "url": "https://www.cocinaselpatronsonora.com.mx/",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Los Opatas #488, esquina Av. de los Petroglifos",
+    "addressLocality": "Heroica Caborca",
+    "addressRegion": "Sonora",
+    "postalCode": "83663",
+    "addressCountry": "MX"
+  },
+  "areaServed": ["Caborca", "Nogales", "San Carlos", "Puerto Peñasco", "Sonoyta"]
+}
+</script>
+
+<style>
+/* ───────────────────────────────────────────────────────────────
+   Cocinas El Patrón
+
+   Concepto: MONOGRAFÍA DE TALLER, no catálogo.
+
+   Hay tres fotografías y son de la misma cocina. Un catálogo con tres
+   fotos delata pobreza; una monografía con tres fotos se lee como
+   curaduría. Por eso no hay galería, no hay carrusel y no hay grilla de
+   iconos: cada foto aparece UNA vez, grande, con pie de ficha técnica.
+
+   La identidad sale del sello del cliente: azul marino, crema y dorado.
+   No se inventó nada.
+   ─────────────────────────────────────────────────────────────── */
+:root{
+  --marino:#0C243C;
+  --marino-hondo:#071726;
+  --crema:#F5F0E4;
+  --crema-viva:#FCFAF3;
+  --oro:#A08250;
+  --oro-luz:#C9A961;
+  --tinta:#1A1A18;
+  --humo:rgba(245,240,228,.62);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:auto}
+body{
+  background:var(--crema); color:var(--tinta);
+  font-family:"DM Sans",system-ui,sans-serif;
+  font-size:17px; line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+
+.marco{width:min(1180px,92vw);margin-inline:auto}
+.angosto{width:min(720px,90vw);margin-inline:auto}
+
+/* Etiquetas grabadas, como las leyendas del sello */
+.grabado{
+  font-family:"Cinzel",Georgia,serif; font-size:11px; font-weight:600;
+  letter-spacing:.42em; text-transform:uppercase; color:var(--oro);
+}
+
+h1,h2,h3,blockquote{
+  font-family:"Cormorant Garamond",Georgia,serif;
+  font-weight:300; line-height:1.06; letter-spacing:-.012em;
+  text-wrap:balance;
+}
+h1{font-size:clamp(46px,8.4vw,104px)}
+h2{font-size:clamp(34px,5.2vw,62px)}
+h3{font-size:clamp(24px,3vw,32px)}
+em{font-style:italic}
+
+/* ── HERO ─────────────────────────────────────────────────────
+   Sin video y sin galería: el protagonista es el SELLO, que es la
+   pieza gráfica más fina que tiene el cliente. Se presenta como lo
+   que es —una marca de taller— sobre marino profundo. */
+.portada{
+  min-height:100svh; background:var(--marino);
+  display:grid; place-items:center; text-align:center;
+  padding:96px 0 72px; position:relative; overflow:hidden;
+}
+.portada::after{  /* viñeta suave, da profundidad sin imagen */
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:radial-gradient(72% 58% at 50% 42%,transparent 40%,rgba(7,23,38,.72) 100%);
+}
+.portada .marco{position:relative;z-index:1;display:flex;flex-direction:column;
+  align-items:center;gap:30px}
+.sello{width:min(252px,42vw);filter:drop-shadow(0 22px 54px rgba(0,0,0,.5))}
+.portada h1{color:var(--crema-viva);max-width:14ch}
+.portada h1 em{color:var(--oro-luz)}
+.bajada{color:var(--humo);font-size:clamp(15px,1.7vw,18px);max-width:46ch}
+
+.filete{width:78px;height:1px;background:var(--oro);opacity:.72}
+
+/* ── FICHA DE FOTO ────────────────────────────────────────────
+   Cada foto lleva pie de catálogo. Convierte una fotografía suelta
+   en una pieza documentada, que es el punto del concepto. */
+figure{margin:0}
+figure img{width:100%;aspect-ratio:4/3;object-fit:cover}
+figcaption{
+  margin-top:14px; font-size:12.5px; color:#6B6558; letter-spacing:.03em;
+  border-top:1px solid rgba(12,36,60,.16); padding-top:11px;
+}
+figcaption b{font-family:"Cinzel",serif;font-weight:600;color:var(--marino);
+  letter-spacing:.1em;font-size:11px}
+
+section{padding:clamp(84px,11vw,150px) 0}
+.marino{background:var(--marino);color:var(--crema)}
+.marino h2{color:var(--crema-viva)}
+.marino p{color:var(--humo)}
+
+/* ── LOS TRES ACTOS ───────────────────────────────────────────
+   El argumento madera sólida contra aglomerado. Es una historia de
+   TEXTO, así que se cuenta con tipografía y no con fotos que no
+   tenemos. Cada acto se fija en pantalla mientras se lee. */
+.acto{min-height:100svh;display:grid;place-items:center;text-align:center}
+.acto .angosto{display:flex;flex-direction:column;align-items:center;gap:22px}
+.anio{
+  font-family:"Cormorant Garamond",serif;font-style:italic;
+  font-size:clamp(64px,13vw,168px);line-height:.84;color:var(--oro);
+  opacity:.28;
+}
+.acto h2{max-width:18ch}
+.acto p{max-width:44ch;font-size:clamp(15px,1.8vw,18px)}
+
+.sentencia{
+  font-size:clamp(26px,4.2vw,50px);line-height:1.16;color:var(--crema-viva);
+  max-width:20ch;border:none;
+}
+.sentencia .oro{color:var(--oro-luz);font-style:italic}
+
+/* ── DATOS ────────────────────────────────────────────────────── */
+.datos{display:grid;gap:1px;background:rgba(12,36,60,.14);
+  grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+  border:1px solid rgba(12,36,60,.14)}
+.dato{background:var(--crema);padding:30px 26px;display:flex;
+  flex-direction:column;gap:7px}
+.dato b{font-family:"Cormorant Garamond",serif;font-size:44px;font-weight:400;
+  line-height:1;color:var(--marino)}
+.dato span{font-size:13.5px;color:#6B6558;line-height:1.45}
+
+/* ── MADERAS ──────────────────────────────────────────────────── */
+.maderas{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.madera{
+  font-family:"Cinzel",serif;font-size:12.5px;font-weight:500;
+  letter-spacing:.18em;text-transform:uppercase;
+  border:1px solid rgba(160,130,80,.5);color:var(--oro);
+  padding:10px 20px;border-radius:2px;
+}
+
+/* ── PROCESO ──────────────────────────────────────────────────── */
+.pasos{display:grid;gap:34px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  counter-reset:p}
+.paso{counter-increment:p;display:flex;flex-direction:column;gap:9px;
+  padding-top:22px;border-top:1px solid rgba(12,36,60,.18)}
+.paso::before{content:"0" counter(p);font-family:"Cinzel",serif;font-size:12px;
+  letter-spacing:.2em;color:var(--oro)}
+.paso b{font-family:"Cormorant Garamond",serif;font-size:25px;font-weight:400}
+.paso span{font-size:14.5px;color:#6B6558}
+
+/* ── CIERRE ───────────────────────────────────────────────────── */
+.cierre{text-align:center}
+.cierre .marco{display:flex;flex-direction:column;align-items:center;gap:26px}
+.boton{
+  display:inline-flex;align-items:center;gap:11px;
+  background:var(--oro);color:var(--marino-hondo);
+  font-family:"Cinzel",serif;font-size:13.5px;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;text-decoration:none;
+  padding:19px 42px;border-radius:2px;transition:background .25s,transform .25s;
+}
+.boton:hover,.boton:focus-visible{background:var(--oro-luz);transform:translateY(-2px)}
+.boton:focus-visible{outline:2px solid var(--crema);outline-offset:4px}
+.donde{color:var(--humo);font-size:14.5px;line-height:1.8}
+.donde a{color:var(--oro-luz)}
+
+footer{background:var(--marino-hondo);color:rgba(245,240,228,.42);
+  padding:42px 0;font-size:12.5px;text-align:center}
+
+/* ── REVELADOS ────────────────────────────────────────────────
+   Estado inicial. Si el visitante pidió menos movimiento, o si el
+   JavaScript no carga, todo queda visible: la animación decora, no
+   sostiene el contenido. */
+.sube{opacity:0;transform:translateY(34px)}
+.js-listo .sube{transition:opacity .9s cubic-bezier(.16,1,.3,1),
+                           transform .9s cubic-bezier(.16,1,.3,1)}
+.sube.visible{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .sube{opacity:1!important;transform:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<header class="portada">
+  <div class="marco">
+    <img class="sello" src="img/sello.png"
+         alt="Sello de Cocinas El Patrón, maestros artesanos" width="900" height="900">
+    <span class="grabado">Heroica Caborca · Sonora</span>
+    <h1>Una cocina que se <em>restaura</em>, no se reemplaza</h1>
+    <div class="filete"></div>
+    <p class="bajada">Fabricamos cocinas integrales en madera 100% sólida.
+      Diseño a medida, ebanistería propia e instalación en cuatro a seis semanas.</p>
+  </div>
+</header>
+
+<!-- Foto 1 de 3: plano general. Presenta el oficio y da contexto. -->
+<section>
+  <div class="marco">
+    <figure class="sube">
+      <img src="img/cocina-general.jpg" width="810" height="810"
+           alt="Cocina integral fabricada por El Patrón, con frentes en tono grafito, salpicadero de mármol y lámparas colgantes">
+      <figcaption><b>Obra en Caborca</b> · Cocina integral a medida ·
+        Ensamble y acabado de taller</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- LOS TRES ACTOS: el argumento del material, contado con tipografía -->
+<section class="marino acto" id="acto1">
+  <div class="angosto">
+    <span class="anio">Año 0</span>
+    <span class="grabado">El espejismo</span>
+    <h2 class="sube">Recién instaladas, se ven <em>iguales</em></h2>
+    <p class="sube">Una cocina de aglomerado y una de madera sólida se
+      parecen el día que las entregan. El frente brilla, las puertas cierran
+      y la diferencia de precio parece un ahorro inteligente.</p>
+  </div>
+</section>
+
+<section class="marino acto" id="acto2">
+  <div class="angosto">
+    <span class="anio">Año 5</span>
+    <span class="grabado">La humedad</span>
+    <h2 class="sube">El vapor no perdona al <em>aserrín prensado</em></h2>
+    <p class="sube">El agua y el vapor hinchan el aglomerado desde adentro.
+      Los tornillos de las bisagras pierden agarre en un material que ya se
+      deshace, y no hay forma de volver a apretarlos. La madera sólida, en
+      cambio, solo asienta su veta con el clima de Sonora.</p>
+  </div>
+</section>
+
+<section class="marino acto" id="acto3">
+  <div class="angosto">
+    <span class="anio">Año 10</span>
+    <span class="grabado">La sentencia</span>
+    <blockquote class="sentencia sube">Una cocina de aglomerado se bota.
+      <span class="oro">Una cocina de El Patrón se lija, se vuelve a barnizar
+      y queda como nueva.</span></blockquote>
+    <div class="filete"></div>
+    <p class="sube">Por eso trabajamos con selladores de alta penetración y
+      barniz de poliuretano de grado premium: para que dentro de diez años
+      todavía valga la pena restaurarla.</p>
+  </div>
+</section>
+
+<!-- Foto 2 de 3: detalle. Se lee como lección técnica, no como repetición. -->
+<section>
+  <div class="marco">
+    <div class="angosto" style="text-align:center;margin-bottom:52px">
+      <span class="grabado">Maderas nobles</span>
+      <h2 class="sube" style="margin-top:16px">Elegimos la especie antes que
+        el <em>color</em></h2>
+    </div>
+    <figure class="sube">
+      <img src="img/cocina-detalle.jpg" width="810" height="810"
+           alt="Detalle de los frentes y herrajes de una cocina de El Patrón">
+      <figcaption><b>Detalle de ensamble</b> · Frentes, herrajes y encuentro
+        con el salpicadero</figcaption>
+    </figure>
+    <div class="maderas sube" style="margin-top:52px">
+      <span class="madera">Encino</span>
+      <span class="madera">Tzalam</span>
+      <span class="madera">Cedro</span>
+      <span class="madera">Banak</span>
+      <span class="madera">Pino</span>
+    </div>
+  </div>
+</section>
+
+<section class="marino">
+  <div class="marco" style="text-align:center">
+    <span class="grabado">El taller</span>
+    <h2 class="sube" style="margin:16px 0 46px">Veinte años de <em>ebanistería</em></h2>
+    <div class="datos sube" style="background:rgba(245,240,228,.14);border-color:rgba(245,240,228,.18)">
+      <div class="dato" style="background:var(--marino)">
+        <b style="color:var(--oro-luz)">20+</b>
+        <span style="color:var(--humo)">años de oficio en ebanistería</span></div>
+      <div class="dato" style="background:var(--marino)">
+        <b style="color:var(--oro-luz)">500+</b>
+        <span style="color:var(--humo)">clientes en el noroeste de Sonora</span></div>
+      <div class="dato" style="background:var(--marino)">
+        <b style="color:var(--oro-luz)">4–6</b>
+        <span style="color:var(--humo)">semanas desde el encargo hasta la instalación</span></div>
+      <div class="dato" style="background:var(--marino)">
+        <b style="color:var(--oro-luz)">100%</b>
+        <span style="color:var(--humo)">madera sólida en toda la estructura</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Foto 3 de 3: cierre aspiracional, antes del contacto. -->
+<section>
+  <div class="marco">
+    <div class="angosto" style="text-align:center;margin-bottom:52px">
+      <span class="grabado">Cómo se encarga</span>
+      <h2 class="sube" style="margin-top:16px">De la medida a la <em>instalación</em></h2>
+    </div>
+    <div class="pasos sube">
+      <div class="paso"><b>Medimos</b>
+        <span>Vamos a tu casa en Caborca y tomamos las medidas reales del
+          espacio, no las del plano.</span></div>
+      <div class="paso"><b>Diseñamos</b>
+        <span>Te proponemos la distribución y elegimos juntos la especie de
+          madera y los acabados.</span></div>
+      <div class="paso"><b>Fabricamos</b>
+        <span>Se construye en nuestro taller. Cuatro a seis semanas, según
+          el tamaño.</span></div>
+      <div class="paso"><b>Instalamos</b>
+        <span>Montamos la cocina completa y la dejamos funcionando.</span></div>
+    </div>
+    <figure class="sube" style="margin-top:62px">
+      <img src="img/cocina-isla.jpg" width="810" height="810"
+           alt="Vista de la cocina terminada e instalada, con la barra y los asientos">
+      <figcaption><b>Entregada e instalada</b> · Caborca, Sonora</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="marino cierre">
+  <div class="marco">
+    <img class="sello" src="img/sello-chico.png" alt="" width="280" height="280"
+         style="width:min(132px,26vw)">
+    <span class="grabado">Maestros artesanos</span>
+    <h2 class="sube">Cuéntanos qué cocina <em>tienes en mente</em></h2>
+    <a class="boton" href="https://wa.me/526371254615" rel="noopener">
+      Escríbenos al WhatsApp</a>
+    <p class="donde">
+      <a href="tel:+526371254615">637 125 4615</a><br>
+      Los Opatas #488, esquina Av. de los Petroglifos<br>
+      Heroica Caborca, Sonora · C.P. 83663<br><br>
+      <span style="color:rgba(245,240,228,.4)">Instalamos en Caborca, Nogales,
+      San Carlos, Puerto Peñasco y Sonoyta</span>
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="marco">Cocinas El Patrón · Fabricación de cocinas integrales ·
+    Heroica Caborca, Sonora</div>
+</footer>
+
+<script>
+/* Revelados al entrar en pantalla.
+
+   IntersectionObserver y no una librería: son 20 elementos y el efecto es
+   una transición CSS. Traer GSAP y Lenis por CDN para esto sería cargar
+   120 KB para lo que resuelven doce líneas — y en un sitio que se ve desde
+   Caborca por datos móviles, ese peso lo paga el cliente.
+
+   La clase js-listo se agrega recién aquí: si el script no corre, el CSS
+   deja todo visible y la página funciona igual. La animación decora, no
+   sostiene el contenido. */
+(function () {
+  var quieto = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (quieto || !('IntersectionObserver' in window)) return;
+
+  document.documentElement.classList.add('js-listo');
+  var ojo = new IntersectionObserver(function (entradas) {
+    entradas.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('visible');
+      ojo.unobserve(e.target);            // se revela una vez y se suelta
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+
+  document.querySelectorAll('.sube').forEach(function (el) { ojo.observe(el); });
+})();
+</script>
+
+</body>
+</html>
