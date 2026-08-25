@@ -107,6 +107,14 @@ em{font-style:italic}
 .sello{width:clamp(96px,11vw,130px);height:auto;aspect-ratio:1/1;
   object-fit:contain;flex:none}
 .medallon .versal{white-space:nowrap}
+/* En fila, tres piezas que no encogen (dos versalitas nowrap + el sello)
+   suman mas que un telefono y sacan la pagina de cuadro. Bajo 760px el
+   medallon se apila y el escudo queda al centro, que es como se lee un
+   escudo. */
+@media (max-width:760px){
+  .medallon{flex-direction:column;gap:16px}
+  .medallon .versal{font-size:10.5px}
+}
 .portada h1{text-align:center}
 .portada h1 em{color:var(--oro)}
 .bajo-titular{display:flex;align-items:baseline;justify-content:space-between;
@@ -169,11 +177,13 @@ figcaption b{font-family:Cinzel,serif;font-size:10px;font-weight:600;
 /* ── ACTOS ───────────────────────────────────────────────────── */
 .acto{padding:clamp(52px,7vw,92px) 0;border-bottom:1px solid var(--linea)}
 .acto:last-of-type{border-bottom:none}
-.acto-fila{display:grid;grid-template-columns:minmax(90px,140px) 1fr;
+.acto-fila{display:grid;grid-template-columns:minmax(150px,210px) 1fr;
   gap:clamp(20px,4vw,60px);align-items:start}
+/* La columna tiene que caber "Año 10" ENTERO: si se parte, el hito deja de
+   leerse como una fecha y queda una "o" suelta bajo la palabra. */
 .acto-anio{font-family:"Playfair Display",serif;font-style:italic;
-  font-size:clamp(38px,5.4vw,72px);line-height:.9;color:var(--oro);
-  letter-spacing:-.03em}
+  font-size:clamp(34px,4.3vw,56px);line-height:.9;color:var(--oro);
+  letter-spacing:-.03em;white-space:nowrap;display:block}
 .acto-cuerpo h3{margin-bottom:14px}
 .acto-cuerpo p{color:var(--gris);max-width:52ch}
 .oscura .acto-cuerpo p{color:var(--humo)}
