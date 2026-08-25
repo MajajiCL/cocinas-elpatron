@@ -125,26 +125,45 @@ em{font-style:italic}
 .palabra{display:inline-block;white-space:nowrap}
 .letra{display:inline-block;will-change:transform,opacity}
 
-/* ── MONOGRAFÍA: las tres fotos, juntas, en sala oscura ─────── */
-.monografia{display:grid;gap:clamp(24px,3vw,44px);
-  grid-template-columns:repeat(12,1fr);align-items:end}
-.pieza-gr{grid-column:1/9}
-.pieza-me{grid-column:9/13}
-.pieza-an{grid-column:1/6}
-.cartela{grid-column:7/13;padding-bottom:8px}
-.cartela h3{margin-bottom:14px}
-.cartela p{font-size:14.5px;max-width:40ch}
+/* ── MONOGRAFÍA: las tres fotos, juntas, en sala oscura ─────────
+   Retícula asimétrica de Henrybuilt, en dos compases distintos: la
+   lámina de conjunto contra la ficha en 60/40, y luego el detalle
+   contra la panorámica en 33/67. Una cuadrícula pareja de tres
+   columnas haría leer las tres fotos como igual de importantes, y no
+   lo son: hay una obra y dos maneras de mirarla. Además son tres
+   tomas de LA MISMA cocina, así que jerarquizarlas es lo único que
+   evita que se lean como repetición. */
+.lamina{display:grid;gap:clamp(24px,3vw,46px);align-items:end;
+  margin-bottom:clamp(24px,3vw,46px)}
+.lamina.p6040{grid-template-columns:58.5fr 38.5fr}
+.lamina.p3367{grid-template-columns:33fr 65fr}
 figure{margin:0}
 figure img{width:100%;object-fit:cover;background:var(--marino-alto)}
-.pieza-gr img{aspect-ratio:4/3}
-.pieza-me img{aspect-ratio:3/4}
-.pieza-an img{aspect-ratio:1/1}
+.pieza-gr img{aspect-ratio:4/5}
+.pieza-me img{aspect-ratio:1/1}
+.pieza-an img{aspect-ratio:16/10}
 figcaption{margin-top:12px;font-size:12px;color:rgba(245,240,228,.5);
   letter-spacing:.02em;border-top:1px solid var(--marino-alto);padding-top:10px}
 figcaption b{font-family:Cinzel,serif;font-size:10px;font-weight:600;
   letter-spacing:.22em;color:var(--oro-luz);display:block;margin-bottom:5px}
+
+/* Ficha técnica: pliego de datos, no tarjeta. Filete arriba de cada
+   renglón y nada más — ni fondo, ni caja, ni sombra. */
+.ficha{padding-bottom:6px}
+.ficha h3{margin-bottom:20px}
+.ficha dl{display:grid;grid-template-columns:auto 1fr;
+  column-gap:clamp(14px,2vw,26px);border-top:1px solid var(--marino-alto)}
+.ficha dt{font-family:Cinzel,serif;font-size:9.5px;font-weight:600;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--oro-luz);
+  padding:13px 0 0;border-top:1px solid var(--marino-alto)}
+.ficha dt:first-of-type,.ficha dd:first-of-type{border-top:none}
+.ficha dd{font-size:14.5px;color:var(--humo);padding:11px 0 13px;
+  border-top:1px solid var(--marino-alto)}
 @media (max-width:820px){
-  .pieza-gr,.pieza-me,.pieza-an,.cartela{grid-column:1/13}
+  .lamina.p6040,.lamina.p3367{grid-template-columns:1fr}
+  .ficha dl{grid-template-columns:1fr}
+  .ficha dt{padding-bottom:2px}
+  .ficha dd{border-top:none;padding-top:0}
 }
 
 /* ── TRATADO DE MADERAS: filas tipográficas, sin tarjetas ───── */
@@ -192,6 +211,63 @@ figcaption b{font-family:Cinzel,serif;font-size:10px;font-weight:600;
 
 .sentencia{font-size:clamp(28px,4.6vw,58px);line-height:1.1;max-width:17ch}
 .sentencia .oro{color:var(--oro-luz);font-style:italic}
+
+/* ── COMPARADOR: el año 10, arrastrable ─────────────────────────
+   El texto de los dos futuros existe igual; lo que cambia es cuánto
+   deja ver el visitante de cada uno. Arrastrar el filete es el gesto
+   —y es el argumento entero de la marca en una interacción.
+
+   Cada lámina ancla su texto A SU LADO y no al centro: así en el
+   reposo del 50% las dos se leen enteras, una por mitad, y ninguna
+   queda cortada a mitad de palabra. La de arriba se recorta con
+   clip-path y no con ancho, para que el texto no se recomprima
+   mientras se arrastra.
+
+   Sin JavaScript queda en 50% y se lee completo. */
+.comparar{--x:50%;position:relative;isolation:isolate;
+  border:1px solid var(--marino-alto);margin-top:clamp(34px,4vw,54px);
+  min-height:clamp(280px,30vw,370px);touch-action:pan-y;cursor:ew-resize;
+  user-select:none;-webkit-user-select:none}
+.cara{position:absolute;inset:0;display:flex;flex-direction:column;
+  justify-content:flex-end;padding:clamp(24px,3.2vw,44px)}
+.cara .txt{max-width:min(44%,34ch)}
+.cara.mala{background:#08131F;align-items:flex-end;text-align:right}
+.cara.mala .txt{margin-left:auto}
+.cara.buena{background:var(--crema);color:var(--marino);
+  clip-path:inset(0 calc(100% - var(--x)) 0 0)}
+.cara h3{font-size:clamp(20px,2.5vw,30px);margin-bottom:12px}
+.cara p{font-size:14.5px;max-width:34ch}
+.cara.mala p{color:var(--humo);margin-left:auto}
+/* La cara clara vive DENTRO de una sala oscura, así que `.oscura h3` le
+   pinta el titular de crema sobre crema y lo borra. Hay que ganarle a esa
+   regla explícitamente, no confiar en que el color del padre se herede. */
+.oscura .cara.buena h3{color:var(--marino)}
+.cara.buena p{color:var(--gris)}
+.cara .rotulo{font-family:Cinzel,serif;font-size:10px;font-weight:600;
+  letter-spacing:.2em;text-transform:uppercase;display:block;
+  margin-bottom:clamp(14px,2vw,22px)}
+.cara.mala .rotulo{color:rgba(245,240,228,.5)}
+.cara.buena .rotulo{color:var(--oro)}
+/* El filete divisor. Es una línea, no un botón: el sistema no admite
+   cápsulas ni sombras, así que el asidero es el propio filete y su
+   marca de arrastre en versalitas. */
+.tirador{position:absolute;top:0;bottom:0;left:var(--x);width:2px;
+  background:var(--oro);transform:translateX(-1px);z-index:2;
+  border:none;padding:0;cursor:ew-resize}
+.tirador::after{content:"◀ ▶";position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);font-size:11px;letter-spacing:.1em;
+  color:var(--marino);background:var(--oro);padding:9px 11px;
+  white-space:nowrap}
+.tirador:focus-visible{outline:2px solid var(--oro-luz);outline-offset:3px}
+@media (max-width:700px){
+  .comparar{min-height:0}
+  .cara{position:static;clip-path:none!important;padding:26px 22px}
+  .cara .txt,.cara p{max-width:none}
+  .cara.mala{text-align:left;align-items:stretch}
+  .cara.mala .txt,.cara.mala p{margin-left:0}
+  .cara.buena{border-top:1px solid var(--oro)}
+  .tirador{display:none}
+}
 .pal{display:inline-block;will-change:transform,opacity}
 
 /* ── CIERRE: membrete notarial ───────────────────────────────── */
@@ -255,7 +331,7 @@ footer{border-top:1px solid var(--linea);padding:34px 0;font-size:12px;
     <h2 class="rev" style="margin:16px 0 clamp(40px,5vw,70px);max-width:16ch">
       Estudio de cocina integral en <em>residencia</em></h2>
 
-    <div class="monografia">
+    <div class="lamina p6040">
       <figure class="pieza-gr rev">
         <img src="img/cocina-general.jpg" width="810" height="810"
              alt="Vista de conjunto de una cocina integral fabricada por El Patrón">
@@ -263,6 +339,27 @@ footer{border-top:1px solid var(--linea);padding:34px 0;font-size:12px;
           Volumetría completa de la obra instalada en Caborca</figcaption>
       </figure>
 
+      <!-- Ficha de obra. Cada dato de aquí lo publica el taller: las
+           maderas, el acabado y el plazo salen de su propio sitio. NO se
+           declara especie ni grosor de esta cocina en particular porque
+           nadie lo ha confirmado, y el perfil de la marca prohíbe
+           expresamente afirmar lo que él no afirma. -->
+      <div class="ficha rev">
+        <h3>Ficha de obra</h3>
+        <dl>
+          <dt>Obra</dt><dd>Cocina integral en residencia particular</dd>
+          <dt>Localidad</dt><dd>Heroica Caborca, Sonora</dd>
+          <dt>Material</dt><dd>Madera cien por ciento sólida, sin aglomerado</dd>
+          <dt>Acabado</dt><dd>Sellador de alta penetración y barniz de
+            poliuretano</dd>
+          <dt>Alcance</dt><dd>Proyecto, fabricación en taller propio e
+            instalación</dd>
+          <dt>Plazo</dt><dd>Cuatro a seis semanas desde el encargo</dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="lamina p3367">
       <figure class="pieza-me rev">
         <img src="img/cocina-detalle.jpg" width="810" height="810"
              alt="Detalle constructivo de los frentes y herrajes">
@@ -276,13 +373,6 @@ footer{border-top:1px solid var(--linea);padding:34px 0;font-size:12px;
         <figcaption><b>Lámina III · Perspectiva</b>
           Módulo de barra y circulación</figcaption>
       </figure>
-
-      <div class="cartela rev">
-        <h3>Una obra, no un catálogo</h3>
-        <p>Cada cocina se proyecta sobre las medidas reales del espacio, se
-          construye en el taller y se instala completa. No hay dos iguales,
-          y por eso no hay catálogo de modelos: hay encargos.</p>
-      </div>
     </div>
   </div>
 </section>
@@ -351,6 +441,30 @@ footer{border-top:1px solid var(--linea);padding:34px 0;font-size:12px;
         </div>
       </div>
     </div>
+
+    <div class="comparar rev" id="comparar">
+      <div class="cara mala">
+        <div class="txt">
+          <span class="rotulo">Año 10 · Aglomerado</span>
+          <h3>Se bota</h3>
+          <p>El tablero hinchado no se lija ni se rebarniza: el aserrín
+            prensado ya perdió forma por dentro. Se cambia la cocina
+            completa y se paga otra vez.</p>
+        </div>
+      </div>
+      <div class="cara buena">
+        <div class="txt">
+          <span class="rotulo">Año 10 · Madera sólida</span>
+          <h3>Se renueva</h3>
+          <p>La misma pieza se lija, se vuelve a sellar y se barniza. La veta
+            queda a la vista otra vez y la cocina sigue siendo la que se
+            instaló.</p>
+        </div>
+      </div>
+      <button class="tirador" id="tirador" type="button" role="slider"
+              aria-label="Comparar el año 10 de una cocina de aglomerado con una de madera sólida"
+              aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"></button>
+    </div>
   </div>
 </section>
 
@@ -373,6 +487,33 @@ footer{border-top:1px solid var(--linea);padding:34px 0;font-size:12px;
       <div class="cifra" style="border-top-color:var(--linea);border-left-color:var(--linea)">
         <b style="color:var(--oro)">0</b>
         <span style="color:var(--gris)">por ciento de aglomerado</span></div>
+    </div>
+
+    <!-- Cuándo iniciar. Es el cierre consultivo de Henrybuilt traído a un
+         taller: en vez de "pide tu cotización", se le dice al dueño de casa
+         en qué momento de su obra conviene llamar y qué pasa después. Aquí
+         la numeración 01/02/03 sí es una secuencia real —hay un orden y no
+         se puede alterar—, que es lo único que justifica numerar. -->
+    <div style="margin-top:clamp(60px,8vw,104px)">
+      <span class="versal rev">Cuándo iniciar</span>
+      <h2 class="rev" style="margin:16px 0 clamp(30px,4vw,50px);max-width:16ch">
+        Llámanos mientras todavía hay <em>planos</em></h2>
+      <p class="rev" style="color:var(--gris);max-width:56ch;
+         margin-bottom:clamp(30px,4vw,46px)">Entre más temprano entra el
+        taller, más se puede resolver en madera y menos hay que corregir
+        después con relleno. El mismo taller que fabrica es el que toma las
+        medidas y el que instala.</p>
+
+      <div class="tratado">
+        <div class="especie rev"><span class="num">01 /</span><b>Visita</b>
+          <span>Vamos al espacio y tomamos las medidas reales, no las del plano.</span></div>
+        <div class="especie rev"><span class="num">02 /</span><b>Proyecto</b>
+          <span>Se define la distribución y se elige la especie de madera.</span></div>
+        <div class="especie rev"><span class="num">03 /</span><b>Taller</b>
+          <span>Se fabrica la cocina completa. Cuatro a seis semanas.</span></div>
+        <div class="especie rev"><span class="num">04 /</span><b>Instalación</b>
+          <span>Caborca, Nogales, San Carlos, Puerto Peñasco y Sonoyta.</span></div>
+      </div>
     </div>
   </div>
 </section>
@@ -504,7 +645,7 @@ window.addEventListener('load', function () {
     scrollTrigger: { trigger: '#sentencia', start: 'top 82%' } });
 
   /* Parallax contenido en las láminas: la imagen respira dentro de su marco. */
-  gsap.utils.toArray('.monografia figure').forEach(function (f) {
+  gsap.utils.toArray('.lamina figure').forEach(function (f) {
     gsap.fromTo(f.querySelector('img'), { scale: 1.08, yPercent: -3 },
       { yPercent: 3, ease: 'none',
         scrollTrigger: { trigger: f, start: 'top bottom', end: 'bottom top',
@@ -513,6 +654,53 @@ window.addEventListener('load', function () {
 
   ScrollTrigger.refresh();
 });
+</script>
+
+<script>
+/* Comparador del año 10. Va en su propio bloque a propósito: el de arriba
+   se rinde entero si GSAP no cargó, y esto tiene que seguir funcionando
+   aunque el CDN esté caído. Sin JavaScript la lámina queda en 50% por CSS
+   y las dos caras se leen igual; esto sólo agrega el gesto. */
+(function () {
+  var caja = document.getElementById('comparar');
+  var tira = document.getElementById('tirador');
+  if (!caja || !tira) return;
+
+  function poner(pct) {
+    pct = Math.max(0, Math.min(100, pct));
+    caja.style.setProperty('--x', pct.toFixed(1) + '%');
+    tira.setAttribute('aria-valuenow', Math.round(pct));
+  }
+  function desdeX(x) {
+    var r = caja.getBoundingClientRect();
+    poner(((x - r.left) / r.width) * 100);
+  }
+
+  var arrastrando = false;
+  caja.addEventListener('pointerdown', function (e) {
+    // Bajo 700px las caras se apilan y el tirador está oculto: ahí el
+    // gesto no significa nada y arrastrar sólo estorbaría el scroll.
+    if (getComputedStyle(tira).display === 'none') return;
+    arrastrando = true;
+    caja.setPointerCapture(e.pointerId);
+    desdeX(e.clientX);
+  });
+  caja.addEventListener('pointermove', function (e) {
+    if (arrastrando) desdeX(e.clientX);
+  });
+  ['pointerup', 'pointercancel'].forEach(function (ev) {
+    caja.addEventListener(ev, function () { arrastrando = false; });
+  });
+
+  tira.addEventListener('keydown', function (e) {
+    var paso = e.shiftKey ? 10 : 4;
+    var hoy = parseFloat(tira.getAttribute('aria-valuenow')) || 50;
+    if (e.key === 'ArrowLeft') { poner(hoy - paso); e.preventDefault(); }
+    if (e.key === 'ArrowRight') { poner(hoy + paso); e.preventDefault(); }
+    if (e.key === 'Home') { poner(0); e.preventDefault(); }
+    if (e.key === 'End') { poner(100); e.preventDefault(); }
+  });
+})();
 </script>
 
 </body>
