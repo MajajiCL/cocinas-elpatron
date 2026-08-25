@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Cocinas integrales en Caborca · Madera sólida | Cocinas El Patrón</title>
-<meta name="description" content="Cocinas integrales fabricadas a medida en madera 100% sólida en Heroica Caborca, Sonora. 20 años de ebanistería, entrega e instalación en 4 a 6 semanas.">
+<meta name="description" content="Cocinas integrales fabricadas a medida en madera 100% sólida en Heroica Caborca, Sonora. Veinte años de ebanistería, entrega e instalación en cuatro a seis semanas.">
 <link rel="canonical" href="https://www.cocinaselpatronsonora.com.mx/">
-<meta name="theme-color" content="#0C243C">
+<meta name="theme-color" content="#F5F0E4">
 <link rel="icon" href="img/sello-chico.png">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Cocinas El Patrón · Maestros artesanos en Caborca">
@@ -16,7 +16,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&display=swap">
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"HomeAndConstructionBusiness",
@@ -29,152 +29,189 @@
 
 <style>
 /* ═══════════════════════════════════════════════════════════════
-   COCINAS EL PATRÓN
+   COCINAS EL PATRÓN — folio de ebanistería
 
-   Stack: Lenis (scroll con inercia) + GSAP ScrollTrigger (fijado,
-   scrub y secuencia horizontal). Es el que corresponde a una landing
-   premium y es lo que se pidió.
+   Sistema adaptado por Antigravity desde "Renaissance gallery on
+   putty paper" (structured.money, vía styles.refero.design), llevado
+   a un taller mexicano con sello heráldico.
 
-   Nota para quien retome esto: la primera versión evitó estas
-   librerías "por peso" y quedó plana. El argumento no se sostenía —
-   el logo solo pesaba más que GSAP y Lenis juntos. Primero se
-   optimiza lo que pesa de verdad (imágenes), después se discute el
-   JavaScript.
+   LAS SEIS REGLAS. Romper cualquiera devuelve el sitio a plantilla:
 
-   Concepto: MONOGRAFÍA DE TALLER. Hay tres fotografías y son de la
-   misma cocina; por eso no hay galería ni carrusel. Cada foto
-   aparece una vez, a pantalla completa, y el peso lo lleva la
-   tipografía y el movimiento.
+     1. La tipografía es la arquitectura. El titular es monumental
+        —hasta 180px— con tracking negativo. No hay fotos suficientes
+        para sostener la página; la letra las reemplaza.
+     2. Salas alternadas: crema, marino, crema, marino, crema. El
+        recorrido es entrar y salir de una galería.
+     3. CERO sombras. CERO degradados. CERO esquinas redondeadas.
+        Toda superficie es plana y todo borde es de un pelo.
+     4. CERO iconos y CERO tarjetas flotantes. En su lugar,
+        numeración tipográfica (01/) y filetes que cortan de lado a
+        lado como el pliego de un folio.
+     5. El sello es un medallón con proporción 1:1 bloqueada. Se
+        estiró una vez y quedó como un óvalo.
+     6. Las tres fotografías van JUNTAS, en una sola sala oscura,
+        catalogadas como la monografía de UNA obra. Dispersas, el ojo
+        nota que es la misma cocina; juntas, se leen como rigor
+        documental.
    ═══════════════════════════════════════════════════════════════ */
 :root{
-  --marino:#0C243C; --marino-hondo:#061320;
-  --crema:#F5F0E4; --crema-viva:#FCFAF3;
-  --oro:#A08250; --oro-luz:#CBA765;
-  --humo:rgba(245,240,228,.6);
+  --crema:#F5F0E4;      /* lienzo de las salas claras */
+  --crema-alta:#FBF8F1; /* un escalón sobre el lienzo, sin romper el tono */
+  --marino:#0C243C;     /* salas oscuras, y tinta sobre crema */
+  --marino-alto:#143452;/* filetes dentro de la sala oscura */
+  --oro:#A08250;        /* único acento; versalitas y cifras */
+  --oro-luz:#C4A264;    /* el mismo oro cuando va sobre marino */
+  --linea:#E2D8C3;      /* filete de un pelo sobre crema */
+  --gris:#6E6656;       /* texto secundario sobre crema */
+  --humo:rgba(245,240,228,.62);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{
-  background:var(--marino); color:var(--crema);
-  font-family:"DM Sans",system-ui,sans-serif; font-size:17px; line-height:1.7;
-  -webkit-font-smoothing:antialiased; overflow-x:hidden;
-}
+body{background:var(--crema);color:var(--marino);
+  font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.72;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{max-width:100%;display:block}
-.marco{width:min(1200px,90vw);margin-inline:auto}
-.angosto{width:min(680px,88vw);margin-inline:auto}
+.marco{width:min(1240px,88vw);margin-inline:auto}
+.angosto{width:min(660px,86vw);margin-inline:auto}
 
-h1,h2,h3,blockquote{font-family:"Cormorant Garamond",Georgia,serif;
-  font-weight:300;line-height:1.03;letter-spacing:-.015em;text-wrap:balance}
-h1{font-size:clamp(44px,7.6vw,96px)}
-h2{font-size:clamp(32px,5vw,64px)}
-em{font-style:italic;color:var(--oro-luz)}
-.grabado{font-family:"Cinzel",serif;font-size:10.5px;font-weight:600;
-  letter-spacing:.44em;text-transform:uppercase;color:var(--oro)}
+/* ── tipografía ──────────────────────────────────────────────── */
+h1,h2,h3,blockquote{font-family:"Playfair Display",Georgia,serif;
+  font-weight:400;line-height:.94;letter-spacing:-.022em;text-wrap:balance}
+h1{font-size:clamp(58px,12.5vw,180px)}
+h2{font-size:clamp(38px,6.6vw,88px)}
+h3{font-size:clamp(24px,3vw,34px);line-height:1.1}
+em{font-style:italic}
+.versal{font-family:Cinzel,Georgia,serif;font-size:10.5px;font-weight:600;
+  letter-spacing:.42em;text-transform:uppercase;color:var(--oro)}
+.folio{font-family:Cinzel,Georgia,serif;font-size:11px;font-weight:500;
+  letter-spacing:.2em;color:var(--oro)}
 
-/* ── barra de avance ─────────────────────────────────────────── */
-#avance{position:fixed;top:0;left:0;height:2px;width:100%;
-  background:var(--oro-luz);transform:scaleX(0);transform-origin:0 50%;
-  z-index:90}
+/* ── salas ───────────────────────────────────────────────────── */
+.sala{padding:clamp(96px,13vw,190px) 0;position:relative}
+.oscura{background:var(--marino);color:var(--crema)}
+.oscura h1,.oscura h2,.oscura h3{color:var(--crema-alta)}
+.oscura .versal,.oscura .folio{color:var(--oro-luz)}
+.oscura p{color:var(--humo)}
 
-/* ── HERO ────────────────────────────────────────────────────── */
-.portada{min-height:100svh;display:grid;place-items:center;text-align:center;
-  padding:88px 0;position:relative;overflow:hidden}
-.portada::after{content:"";position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(70% 55% at 50% 40%,transparent 38%,var(--marino-hondo) 100%)}
-.portada .marco{position:relative;z-index:2;display:flex;flex-direction:column;
-  align-items:center;gap:26px}
-.sello{width:clamp(84px,8.6vw,112px);
-  filter:drop-shadow(0 12px 30px rgba(0,0,0,.5))}
-.portada h1{max-width:13ch;color:var(--crema-viva)}
-.bajada{color:var(--humo);font-size:clamp(15px,1.7vw,18px);max-width:44ch}
-.filete{width:74px;height:1px;background:var(--oro)}
-.baja-aviso{position:absolute;bottom:34px;left:50%;translate:-50% 0;z-index:2;
-  font-family:"Cinzel",serif;font-size:9.5px;letter-spacing:.36em;
-  color:rgba(245,240,228,.34);text-transform:uppercase}
+/* Filete que corta de lado a lado, como el pliego de un folio.
+   Reemplaza a la tarjeta: no hay cajas, hay líneas. */
+.regla{height:1px;background:var(--linea);width:100%}
+.oscura .regla{background:var(--marino-alto)}
 
-/* Cada letra del titular entra por separado */
+/* ── PORTADA (sala clara) ────────────────────────────────────── */
+.portada{min-height:100svh;display:flex;flex-direction:column;
+  justify-content:center;padding:clamp(60px,9vw,110px) 0}
+.medallon{display:flex;align-items:center;justify-content:center;
+  gap:clamp(18px,4vw,48px);margin-bottom:clamp(40px,6vw,74px)}
+/* 1:1 bloqueado y flex:none: dentro de un flex el navegador estiraba el
+   sello y lo dejaba ovalado. */
+.sello{width:clamp(96px,11vw,130px);height:auto;aspect-ratio:1/1;
+  object-fit:contain;flex:none}
+.medallon .versal{white-space:nowrap}
+.portada h1{text-align:center}
+.portada h1 em{color:var(--oro)}
+.bajo-titular{display:flex;align-items:baseline;justify-content:space-between;
+  gap:26px;flex-wrap:wrap;margin-top:clamp(38px,5vw,62px)}
+.bajo-titular p{max-width:38ch;color:var(--gris);font-size:15.5px}
+
+/* La palabra no se parte aunque se anime letra a letra */
+.palabra{display:inline-block;white-space:nowrap}
 .letra{display:inline-block;will-change:transform,opacity}
 
-/* ── FOTO A PANTALLA COMPLETA ────────────────────────────────── */
-.lamina{height:100svh;position:relative;overflow:hidden;display:grid;
-  place-items:end start}
-.lamina img{position:absolute;inset:0;width:100%;height:120%;
-  object-fit:cover;will-change:transform}
-.lamina::after{content:"";position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(6,19,32,.5) 0%,transparent 32%,
-             rgba(6,19,32,.86) 100%)}
-.pie{position:relative;z-index:2;padding:0 0 60px;width:min(1200px,90vw);
-  margin-inline:auto}
-.pie b{font-family:"Cinzel",serif;font-size:10.5px;font-weight:600;
-  letter-spacing:.28em;color:var(--oro-luz);display:block;margin-bottom:7px}
-.pie span{font-size:14px;color:rgba(245,240,228,.72)}
+/* ── MONOGRAFÍA: las tres fotos, juntas, en sala oscura ─────── */
+.monografia{display:grid;gap:clamp(24px,3vw,44px);
+  grid-template-columns:repeat(12,1fr);align-items:end}
+.pieza-gr{grid-column:1/9}
+.pieza-me{grid-column:9/13}
+.pieza-an{grid-column:1/6}
+.cartela{grid-column:7/13;padding-bottom:8px}
+.cartela h3{margin-bottom:14px}
+.cartela p{font-size:14.5px;max-width:40ch}
+figure{margin:0}
+figure img{width:100%;object-fit:cover;background:var(--marino-alto)}
+.pieza-gr img{aspect-ratio:4/3}
+.pieza-me img{aspect-ratio:3/4}
+.pieza-an img{aspect-ratio:1/1}
+figcaption{margin-top:12px;font-size:12px;color:rgba(245,240,228,.5);
+  letter-spacing:.02em;border-top:1px solid var(--marino-alto);padding-top:10px}
+figcaption b{font-family:Cinzel,serif;font-size:10px;font-weight:600;
+  letter-spacing:.22em;color:var(--oro-luz);display:block;margin-bottom:5px}
+@media (max-width:820px){
+  .pieza-gr,.pieza-me,.pieza-an,.cartela{grid-column:1/13}
+}
 
-/* ── ACTOS EN SECUENCIA HORIZONTAL ───────────────────────────
-   Los tres actos se recorren de lado mientras la sección queda
-   fija. Es la pieza que convierte el argumento en experiencia. */
-#actos{height:100svh;overflow:hidden;position:relative}
-.riel{display:flex;height:100%;width:300vw}
-.acto{width:100vw;height:100%;display:grid;place-items:center;
-  text-align:center;padding:0 6vw;position:relative}
-.acto .angosto{display:flex;flex-direction:column;align-items:center;gap:20px}
-.anio{position:absolute;font-family:"Cormorant Garamond",serif;font-style:italic;
-  font-size:min(34vw,340px);line-height:.8;color:var(--oro);opacity:.09;
-  pointer-events:none;user-select:none;z-index:0}
-.acto .angosto{position:relative;z-index:1}
-.acto h2{max-width:17ch}
-.acto p{max-width:42ch;color:var(--humo);font-size:clamp(15px,1.8vw,18px)}
-.sentencia{font-size:clamp(24px,3.6vw,44px);line-height:1.18;
-  color:var(--crema-viva);max-width:19ch}
+/* ── TRATADO DE MADERAS: filas tipográficas, sin tarjetas ───── */
+.tratado{border-top:1px solid var(--linea)}
+.especie{display:grid;grid-template-columns:auto 1fr auto;gap:clamp(16px,3vw,42px);
+  align-items:baseline;padding:clamp(20px,2.6vw,32px) 0;
+  border-bottom:1px solid var(--linea)}
+.especie .num{font-family:Cinzel,serif;font-size:11px;letter-spacing:.16em;
+  color:var(--oro)}
+.especie b{font-family:"Playfair Display",serif;font-size:clamp(26px,3.6vw,44px);
+  font-weight:400;letter-spacing:-.015em}
+.especie span{font-size:14px;color:var(--gris);text-align:right;max-width:34ch}
+@media (max-width:700px){
+  .especie{grid-template-columns:auto 1fr}
+  .especie span{grid-column:1/3;text-align:left;margin-top:4px}
+}
+
+/* ── MANIFIESTO: cifras colosales, sin cajas ────────────────── */
+.cifras{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.cifra{padding:clamp(28px,3.4vw,44px) clamp(18px,2.4vw,34px);
+  border-top:1px solid var(--marino-alto);border-left:1px solid var(--marino-alto)}
+.cifra:first-child{border-left:none}
+.cifra b{display:block;font-family:"Playfair Display",serif;
+  font-size:clamp(52px,7vw,92px);font-weight:400;line-height:.9;
+  letter-spacing:-.03em;color:var(--oro-luz)}
+.cifra span{display:block;margin-top:12px;font-size:13.5px;color:var(--humo);
+  line-height:1.5}
+@media (max-width:700px){.cifra{border-left:none}}
+
+/* ── ACTOS ───────────────────────────────────────────────────── */
+.acto{padding:clamp(52px,7vw,92px) 0;border-bottom:1px solid var(--linea)}
+.acto:last-of-type{border-bottom:none}
+.acto-fila{display:grid;grid-template-columns:minmax(90px,140px) 1fr;
+  gap:clamp(20px,4vw,60px);align-items:start}
+.acto-anio{font-family:"Playfair Display",serif;font-style:italic;
+  font-size:clamp(38px,5.4vw,72px);line-height:.9;color:var(--oro);
+  letter-spacing:-.03em}
+.acto-cuerpo h3{margin-bottom:14px}
+.acto-cuerpo p{color:var(--gris);max-width:52ch}
+.oscura .acto-cuerpo p{color:var(--humo)}
+.oscura .acto{border-bottom-color:var(--marino-alto)}
+@media (max-width:640px){.acto-fila{grid-template-columns:1fr;gap:12px}}
+
+.sentencia{font-size:clamp(28px,4.6vw,58px);line-height:1.1;max-width:17ch}
+.sentencia .oro{color:var(--oro-luz);font-style:italic}
 .pal{display:inline-block;will-change:transform,opacity}
 
-/* ── SECCIONES ───────────────────────────────────────────────── */
-section{padding:clamp(88px,12vw,164px) 0}
-.centro{text-align:center}
-.datos{display:grid;gap:1px;background:rgba(245,240,228,.14);
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  border:1px solid rgba(245,240,228,.14)}
-.dato{background:var(--marino);padding:32px 24px;display:flex;
-  flex-direction:column;gap:6px}
-.dato b{font-family:"Cormorant Garamond",serif;font-size:52px;font-weight:300;
-  line-height:1;color:var(--oro-luz)}
-.dato span{font-size:13px;color:var(--humo);line-height:1.5}
+/* ── CIERRE: membrete notarial ───────────────────────────────── */
+.membrete{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,70px);
+  align-items:start;padding-top:clamp(30px,4vw,50px);
+  border-top:1px solid var(--linea)}
+.membrete dt{font-family:Cinzel,serif;font-size:10px;font-weight:600;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--oro);
+  margin-bottom:6px}
+.membrete dd{margin:0 0 22px;font-size:15px;line-height:1.6}
+.membrete a{color:var(--marino);text-decoration:none;
+  border-bottom:1px solid var(--oro)}
+.boton{display:inline-block;background:var(--marino);color:var(--crema);
+  font-family:Cinzel,serif;font-size:12.5px;font-weight:600;letter-spacing:.18em;
+  text-transform:uppercase;text-decoration:none;padding:20px 46px;
+  border:1px solid var(--marino);transition:background .3s,color .3s}
+.boton:hover,.boton:focus-visible{background:transparent;color:var(--marino)}
+.boton:focus-visible{outline:2px solid var(--oro);outline-offset:3px}
+@media (max-width:700px){.membrete{grid-template-columns:1fr}}
 
-.maderas{display:flex;flex-wrap:wrap;gap:9px;justify-content:center}
-.madera{font-family:"Cinzel",serif;font-size:11.5px;font-weight:500;
-  letter-spacing:.2em;text-transform:uppercase;color:var(--oro-luz);
-  border:1px solid rgba(203,167,101,.42);padding:11px 21px}
+footer{border-top:1px solid var(--linea);padding:34px 0;font-size:12px;
+  color:var(--gris);text-align:center}
 
-.pasos{display:grid;gap:32px;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
-  counter-reset:p}
-.paso{counter-increment:p;display:flex;flex-direction:column;gap:8px;
-  padding-top:20px;border-top:1px solid rgba(245,240,228,.18)}
-.paso::before{content:"0" counter(p);font-family:"Cinzel",serif;font-size:11px;
-  letter-spacing:.22em;color:var(--oro)}
-.paso b{font-family:"Cormorant Garamond",serif;font-size:26px;font-weight:400;
-  color:var(--crema-viva)}
-.paso span{font-size:14px;color:var(--humo)}
+/* ── avance de lectura ───────────────────────────────────────── */
+#avance{position:fixed;top:0;left:0;height:2px;width:100%;background:var(--oro);
+  transform:scaleX(0);transform-origin:0 50%;z-index:90}
 
-.boton{display:inline-flex;align-items:center;gap:10px;background:var(--oro);
-  color:var(--marino-hondo);font-family:"Cinzel",serif;font-size:13px;
-  font-weight:600;letter-spacing:.16em;text-transform:uppercase;
-  text-decoration:none;padding:19px 44px;
-  transition:background .3s,transform .3s}
-.boton:hover,.boton:focus-visible{background:var(--oro-luz);transform:translateY(-3px)}
-.boton:focus-visible{outline:2px solid var(--crema);outline-offset:4px}
-.donde{color:var(--humo);font-size:14px;line-height:1.9}
-.donde a{color:var(--oro-luz)}
-footer{background:var(--marino-hondo);color:rgba(245,240,228,.4);padding:40px 0;
-  font-size:12px;text-align:center}
-
-.pila{display:flex;flex-direction:column;align-items:center;gap:24px}
 .rev{will-change:transform,opacity}
-
-/* Si el visitante pide menos movimiento, o si algo falla, todo visible. */
 @media (prefers-reduced-motion:reduce){
-  .letra,.pal,.rev{opacity:1!important;transform:none!important}
-  .riel{width:auto;flex-direction:column;height:auto}
-  #actos{height:auto;overflow:visible}
-  .acto{width:auto;min-height:100svh}
-  .lamina img{height:100%}
+  .rev,.letra,.pal{opacity:1!important;transform:none!important}
 }
 </style>
 </head>
@@ -182,293 +219,286 @@ footer{background:var(--marino-hondo);color:rgba(245,240,228,.4);padding:40px 0;
 
 <div id="avance"></div>
 
-<header class="portada">
+<!-- I · PORTADA — sala clara, frontispicio -->
+<header class="sala portada">
   <div class="marco">
-    <img class="sello rev" src="img/sello.png" width="320" height="320"
-         alt="Sello de Cocinas El Patrón, maestros artesanos">
-    <span class="grabado rev">Heroica Caborca · Sonora</span>
-    <h1 id="titular">Una cocina que se <em>restaura</em>, no se reemplaza</h1>
-    <div class="filete rev"></div>
-    <p class="bajada rev">Fabricamos cocinas integrales en madera 100% sólida.
-      Diseño a medida, ebanistería propia e instalación en cuatro a seis semanas.</p>
+    <div class="medallon">
+      <span class="versal rev">Oficio y tradición</span>
+      <img class="sello rev" src="img/sello.png" width="320" height="320"
+           alt="Sello de Cocinas El Patrón, maestros artesanos">
+      <span class="versal rev">Caborca · Sonora</span>
+    </div>
+    <h1 id="titular">Madera <em>sólida</em></h1>
+    <div class="bajo-titular">
+      <p class="rev">Fabricamos cocinas integrales a medida en madera cien por
+        ciento sólida. Diseño, ebanistería propia e instalación en cuatro a
+        seis semanas.</p>
+      <span class="folio rev">MMIV — MMXXVI · Heroica Caborca</span>
+    </div>
   </div>
-  <span class="baja-aviso">Desliza</span>
 </header>
 
-<!-- Foto 1 de 3 · a pantalla completa, con parallax -->
-<div class="lamina">
-  <img src="img/cocina-general.jpg" width="810" height="810"
-       alt="Cocina integral fabricada por El Patrón, frentes en tono grafito y salpicadero de mármol">
-  <div class="pie"><b>Obra en Caborca</b>
-    <span>Cocina integral a medida · Ensamble y acabado de taller</span></div>
-</div>
-
-<!-- Los tres actos, en secuencia horizontal fijada -->
-<section id="actos">
-  <div class="riel">
-    <article class="acto">
-      <span class="anio">0</span>
-      <div class="angosto">
-        <span class="grabado">Año cero · El espejismo</span>
-        <h2>Recién instaladas, se ven <em>iguales</em></h2>
-        <p>Una cocina de aglomerado y una de madera sólida se parecen el día
-          que las entregan. El frente brilla, las puertas cierran, y la
-          diferencia de precio parece un ahorro inteligente.</p>
-      </div>
-    </article>
-
-    <article class="acto">
-      <span class="anio">5</span>
-      <div class="angosto">
-        <span class="grabado">Año cinco · La humedad</span>
-        <h2>El vapor no perdona al <em>aserrín prensado</em></h2>
-        <p>El agua hincha el aglomerado desde adentro. Los tornillos de las
-          bisagras pierden agarre en un material que ya se deshace, y no hay
-          forma de volver a apretarlos. La madera sólida solo asienta su veta
-          con el clima de Sonora.</p>
-      </div>
-    </article>
-
-    <article class="acto">
-      <span class="anio">10</span>
-      <div class="angosto">
-        <span class="grabado">Año diez · La sentencia</span>
-        <blockquote class="sentencia" id="sentencia">Una cocina de aglomerado
-          se bota. Una cocina de El Patrón se lija, se vuelve a barnizar y
-          queda como nueva.</blockquote>
-      </div>
-    </article>
-  </div>
-</section>
-
-<section class="centro">
-  <div class="angosto pila">
-    <span class="grabado rev">El acabado</span>
-    <h2 class="rev">Para que a los diez años todavía <em>valga la pena</em></h2>
-    <p class="rev" style="color:var(--humo)">Selladores de alta penetración y
-      barniz de poliuretano de grado premium. No es un detalle de ficha
-      técnica: es la razón por la que una cocina se puede restaurar en vez de
-      reemplazar.</p>
-  </div>
-</section>
-
-<!-- Foto 2 de 3 -->
-<div class="lamina">
-  <img src="img/cocina-detalle.jpg" width="810" height="810"
-       alt="Detalle de frentes y herrajes de una cocina de El Patrón">
-  <div class="pie"><b>Detalle de ensamble</b>
-    <span>Frentes, herrajes y encuentro con el salpicadero</span></div>
-</div>
-
-<section class="centro">
-  <div class="marco pila">
-    <span class="grabado rev">Maderas nobles</span>
-    <h2 class="rev">Elegimos la especie antes que el <em>color</em></h2>
-    <div class="maderas rev" style="margin-top:14px">
-      <span class="madera">Encino</span><span class="madera">Tzalam</span>
-      <span class="madera">Cedro</span><span class="madera">Banak</span>
-      <span class="madera">Pino</span>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="marco centro">
-    <span class="grabado rev">El taller</span>
-    <h2 class="rev" style="margin:14px 0 44px">Veinte años de <em>ebanistería</em></h2>
-    <div class="datos rev">
-      <div class="dato"><b>20+</b><span>años de oficio en ebanistería</span></div>
-      <div class="dato"><b>500+</b><span>clientes en el noroeste de Sonora</span></div>
-      <div class="dato"><b>4–6</b><span>semanas del encargo a la instalación</span></div>
-      <div class="dato"><b>100%</b><span>madera sólida en toda la estructura</span></div>
-    </div>
-  </div>
-</section>
-
-<section>
+<!-- II · MONOGRAFÍA — sala oscura, las tres fotos juntas -->
+<section class="sala oscura">
   <div class="marco">
-    <div class="angosto centro" style="margin-bottom:50px">
-      <span class="grabado rev">Cómo se encarga</span>
-      <h2 class="rev" style="margin-top:14px">De la medida a la <em>instalación</em></h2>
-    </div>
-    <div class="pasos rev">
-      <div class="paso"><b>Medimos</b><span>Vamos a tu casa en Caborca y tomamos
-        las medidas reales del espacio, no las del plano.</span></div>
-      <div class="paso"><b>Diseñamos</b><span>Proponemos la distribución y
-        elegimos juntos la especie de madera y los acabados.</span></div>
-      <div class="paso"><b>Fabricamos</b><span>Se construye en nuestro taller.
-        Cuatro a seis semanas según el tamaño.</span></div>
-      <div class="paso"><b>Instalamos</b><span>Montamos la cocina completa y la
-        dejamos funcionando.</span></div>
+    <span class="versal rev">Monografía de una pieza</span>
+    <h2 class="rev" style="margin:16px 0 clamp(40px,5vw,70px);max-width:16ch">
+      Estudio de cocina integral en <em>residencia</em></h2>
+
+    <div class="monografia">
+      <figure class="pieza-gr rev">
+        <img src="img/cocina-general.jpg" width="810" height="810"
+             alt="Vista de conjunto de una cocina integral fabricada por El Patrón">
+        <figcaption><b>Lámina I · Conjunto</b>
+          Volumetría completa de la obra instalada en Caborca</figcaption>
+      </figure>
+
+      <figure class="pieza-me rev">
+        <img src="img/cocina-detalle.jpg" width="810" height="810"
+             alt="Detalle constructivo de los frentes y herrajes">
+        <figcaption><b>Lámina II · Detalle</b>
+          Ensamble, veta y herrajes</figcaption>
+      </figure>
+
+      <figure class="pieza-an rev">
+        <img src="img/cocina-isla.jpg" width="810" height="810"
+             alt="Perspectiva funcional de la cocina con la barra">
+        <figcaption><b>Lámina III · Perspectiva</b>
+          Módulo de barra y circulación</figcaption>
+      </figure>
+
+      <div class="cartela rev">
+        <h3>Una obra, no un catálogo</h3>
+        <p>Cada cocina se proyecta sobre las medidas reales del espacio, se
+          construye en el taller y se instala completa. No hay dos iguales,
+          y por eso no hay catálogo de modelos: hay encargos.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Foto 3 de 3 -->
-<div class="lamina">
-  <img src="img/cocina-isla.jpg" width="810" height="810"
-       alt="Cocina terminada e instalada, con la barra y los asientos">
-  <div class="pie"><b>Entregada e instalada</b><span>Caborca, Sonora</span></div>
-</div>
+<!-- III · TRATADO DE MADERAS — sala clara, puro texto -->
+<section class="sala">
+  <div class="marco">
+    <span class="versal rev">Tratado de maderas</span>
+    <h2 class="rev" style="margin:16px 0 clamp(38px,5vw,62px);max-width:15ch">
+      Elegimos la especie antes que el <em>color</em></h2>
 
-<section class="centro">
-  <div class="marco pila">
+    <div class="tratado">
+      <div class="especie rev"><span class="num">01 /</span><b>Encino</b>
+        <span>Duro y de veta marcada. Para frentes que se tocan todos los días.</span></div>
+      <div class="especie rev"><span class="num">02 /</span><b>Tzalam</b>
+        <span>Madera tropical de tono oscuro y estable con el clima.</span></div>
+      <div class="especie rev"><span class="num">03 /</span><b>Cedro</b>
+        <span>Ligero y aromático. Tradicional en ebanistería mexicana.</span></div>
+      <div class="especie rev"><span class="num">04 /</span><b>Banak</b>
+        <span>Grano fino y parejo. Recibe muy bien el barniz.</span></div>
+      <div class="especie rev"><span class="num">05 /</span><b>Pino</b>
+        <span>De primera calidad, seleccionado pieza por pieza.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- IV · LOS TRES AÑOS — sala oscura, el argumento -->
+<section class="sala oscura">
+  <div class="marco">
+    <span class="versal rev">El paso del tiempo</span>
+    <h2 class="rev" style="margin:16px 0 clamp(40px,5vw,66px);max-width:14ch">
+      Lo que separa una cocina de <em>otra</em></h2>
+
+    <div class="acto rev">
+      <div class="acto-fila">
+        <span class="acto-anio">Año 0</span>
+        <div class="acto-cuerpo">
+          <h3>Se ven iguales</h3>
+          <p>Una cocina de aglomerado y una de madera sólida se parecen el día
+            que las entregan. El frente brilla, las puertas cierran, y la
+            diferencia de precio parece un ahorro inteligente.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="acto rev">
+      <div class="acto-fila">
+        <span class="acto-anio">Año 5</span>
+        <div class="acto-cuerpo">
+          <h3>El vapor entra</h3>
+          <p>El agua hincha el aserrín prensado desde adentro. Los tornillos de
+            las bisagras pierden agarre en un material que ya se deshace, y no
+            hay forma de volver a apretarlos. La madera sólida solo asienta su
+            veta con el clima de Sonora.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="acto rev">
+      <div class="acto-fila">
+        <span class="acto-anio">Año 10</span>
+        <div class="acto-cuerpo">
+          <blockquote class="sentencia" id="sentencia">Una de aglomerado se
+            bota. <span class="oro">Una nuestra se lija, se barniza y queda
+            como nueva.</span></blockquote>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- V · MANIFIESTO — sala clara, cifras -->
+<section class="sala">
+  <div class="marco">
+    <span class="versal rev">El taller</span>
+    <h2 class="rev" style="margin:16px 0 clamp(38px,5vw,58px);max-width:14ch">
+      Veinte años de <em>ebanistería</em></h2>
+    <div class="cifras rev" style="border-bottom:1px solid var(--linea)">
+      <div class="cifra" style="border-top-color:var(--linea);border-left-color:var(--linea)">
+        <b style="color:var(--oro)">20</b>
+        <span style="color:var(--gris)">años de oficio</span></div>
+      <div class="cifra" style="border-top-color:var(--linea);border-left-color:var(--linea)">
+        <b style="color:var(--oro)">500</b>
+        <span style="color:var(--gris)">clientes en el noroeste de Sonora</span></div>
+      <div class="cifra" style="border-top-color:var(--linea);border-left-color:var(--linea)">
+        <b style="color:var(--oro)">4–6</b>
+        <span style="color:var(--gris)">semanas del encargo a la instalación</span></div>
+      <div class="cifra" style="border-top-color:var(--linea);border-left-color:var(--linea)">
+        <b style="color:var(--oro)">0</b>
+        <span style="color:var(--gris)">por ciento de aglomerado</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- VI · MEMBRETE — sala oscura, cierre -->
+<section class="sala oscura">
+  <div class="marco" style="text-align:center">
     <img class="sello rev" src="img/sello-chico.png" alt="" width="128" height="128"
-         style="width:min(88px,20vw)">
-    <span class="grabado rev">Maestros artesanos</span>
-    <h2 class="rev">Cuéntanos qué cocina <em>tienes en mente</em></h2>
-    <a class="boton rev" href="https://wa.me/526371254615" rel="noopener">
+         style="margin:0 auto;width:min(94px,20vw)">
+    <span class="versal rev" style="display:block;margin-top:20px">Maestros artesanos</span>
+    <h2 class="rev" style="margin:18px auto clamp(36px,5vw,54px);max-width:15ch">
+      Cuéntanos qué cocina <em>tienes en mente</em></h2>
+    <a class="boton rev" href="https://wa.me/526371254615" rel="noopener"
+       style="background:var(--oro);border-color:var(--oro);color:var(--marino)">
       Escríbenos al WhatsApp</a>
-    <p class="donde rev"><a href="tel:+526371254615">637 125 4615</a><br>
-      Los Opatas #488, esquina Av. de los Petroglifos<br>
-      Heroica Caborca, Sonora · C.P. 83663<br><br>
-      <span style="color:rgba(245,240,228,.38)">Instalamos en Caborca, Nogales,
-      San Carlos, Puerto Peñasco y Sonoyta</span></p>
+
+    <dl class="membrete rev" style="border-top-color:var(--marino-alto);
+        margin-top:clamp(46px,6vw,74px);text-align:left">
+      <div>
+        <dt>Taller</dt>
+        <dd style="color:var(--humo)">Los Opatas #488, esquina Av. de los
+          Petroglifos<br>Heroica Caborca, Sonora · C.P. 83663</dd>
+        <dt>Teléfono</dt>
+        <dd><a href="tel:+526371254615"
+              style="color:var(--crema-alta);border-bottom-color:var(--oro-luz)">637 125 4615</a></dd>
+      </div>
+      <div>
+        <dt>Instalamos en</dt>
+        <dd style="color:var(--humo)">Caborca · Nogales · San Carlos<br>
+          Puerto Peñasco · Sonoyta</dd>
+        <dt>Plazo</dt>
+        <dd style="color:var(--humo)">Cuatro a seis semanas desde el encargo</dd>
+      </div>
+    </dl>
   </div>
 </section>
 
 <footer><div class="marco">Cocinas El Patrón · Fabricación de cocinas
-  integrales · Heroica Caborca, Sonora</div></footer>
+  integrales en madera sólida · Heroica Caborca, Sonora</div></footer>
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js" defer></script>
 <script defer>
 window.addEventListener('load', function () {
-  /* Si las librerías no cargaron —CDN caído, red mala en Caborca— la página
-     se queda como está y se lee entera. El movimiento decora; el contenido
-     nunca depende de que llegue. Esta es la lección de la versión anterior,
-     donde el hero se quedó invisible esperando una animación. */
+  /* Si las librerías no cargan —CDN caído, red mala en Caborca— la página se
+     lee completa igual. El movimiento decora; el contenido no depende de él.
+     Esta regla se aprendió dos veces: primero con requestAnimationFrame y
+     después con gsap.from(), que deja el elemento en opacidad 0 hasta que la
+     animación corre. Por eso abajo hay una red de seguridad. */
   if (!window.gsap || !window.ScrollTrigger) return;
-  var quieto = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (quieto) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   gsap.registerPlugin(ScrollTrigger);
 
-  /* ── Scroll con inercia ────────────────────────────────────── */
   if (window.Lenis) {
-    var lenis = new Lenis({ duration: 1.15, smoothWheel: true });
+    var lenis = new Lenis({ duration: 1.1, smoothWheel: true });
     lenis.on('scroll', ScrollTrigger.update);
     gsap.ticker.add(function (t) { lenis.raf(t * 1000); });
     gsap.ticker.lagSmoothing(0);
   }
 
-  /* ── Barra de avance ───────────────────────────────────────── */
-  gsap.to('#avance', {
-    scaleX: 1, ease: 'none',
+  gsap.to('#avance', { scaleX: 1, ease: 'none',
     scrollTrigger: { trigger: document.body, start: 'top top',
-                     end: 'bottom bottom', scrub: 0.3 }
-  });
+                     end: 'bottom bottom', scrub: .3 } });
 
-  /* ── Titular letra por letra ───────────────────────────────
-     Se parte desde JS y no en el HTML: así el titular sigue siendo
-     texto plano para Google y para un lector de pantalla. */
+  /* Titular letra a letra, pero envuelto POR PALABRA: sin el envoltorio el
+     navegador rompe la línea entre dos letras y sale "Made / ra". */
   var tit = document.getElementById('titular');
-  (function partir(nodo) {
-    var piezas = [];
+  (function (nodo) {
+    var trozos = [];
     nodo.childNodes.forEach(function (n) {
       var em = n.nodeType === 1 && n.tagName === 'EM';
-      (n.textContent || '').split('').forEach(function (c) {
-        piezas.push({ c: c, em: em });
+      (n.textContent || '').split(/(\s+)/).forEach(function (t) {
+        if (t) trozos.push({ t: t, em: em, sp: /^\s+$/.test(t) });
       });
     });
     nodo.textContent = '';
-    var envEm = null;
-    piezas.forEach(function (p) {
-      var s = document.createElement('span');
-      s.className = 'letra';
-      s.textContent = p.c === ' ' ? ' ' : p.c;
-      if (p.em) {
-        if (!envEm) { envEm = document.createElement('em'); nodo.appendChild(envEm); }
-        envEm.appendChild(s);
-      } else { envEm = null; nodo.appendChild(s); }
+    trozos.forEach(function (z) {
+      if (z.sp) { nodo.appendChild(document.createTextNode(' ')); return; }
+      var pal = document.createElement('span');
+      pal.className = 'palabra';
+      z.t.split('').forEach(function (c) {
+        var l = document.createElement('span');
+        l.className = 'letra'; l.textContent = c; pal.appendChild(l);
+      });
+      if (z.em) { var e = document.createElement('em');
+                  e.appendChild(pal); nodo.appendChild(e); }
+      else { nodo.appendChild(pal); }
     });
   })(tit);
 
-  /* ── Entrada del hero ────────────────────────────────────────
-     RED DE SEGURIDAD, y no es teórica: `gsap.from()` deja el elemento en
-     el estado inicial —opacidad 0— hasta que la línea de tiempo corre. Si
-     por lo que sea no corre, el hero queda invisible. Ya pasó en la
-     versión anterior con requestAnimationFrame y la pestaña en segundo
-     plano.
+  var sen = document.getElementById('sentencia');
+  if (sen) {
+    var html = '';
+    sen.childNodes.forEach(function (n) {
+      var oro = n.nodeType === 1 && n.classList.contains('oro');
+      (n.textContent || '').trim().split(/\s+/).filter(Boolean).forEach(function (p) {
+        html += '<span class="pal' + (oro ? ' oro' : '') + '">' + p + '</span> ';
+      });
+    });
+    sen.innerHTML = html;
+  }
 
-     A los 2,5 segundos, si el hero no terminó de entrar, se revela a la
-     fuerza. Un sitio sin animación se lee; uno en blanco no. */
-  var heroListo = false;
+  /* Red de seguridad: si a los 2,5 s el hero no entró, se revela a la fuerza. */
+  var listo = false;
   setTimeout(function () {
-    if (heroListo) return;
-    gsap.set(['.portada .sello', '.portada .grabado', '#titular .letra',
-              '.bajada', '.baja-aviso'], { opacity: 1, y: 0, clearProps: 'all' });
-    gsap.set('.portada .filete', { scaleX: 1, clearProps: 'all' });
+    if (listo) return;
+    gsap.set('.rev, .letra, .pal', { opacity: 1, y: 0, clearProps: 'all' });
   }, 2500);
 
   gsap.timeline({ defaults: { ease: 'expo.out' },
-                  onComplete: function () { heroListo = true; } })
-    .from('.portada .sello', { y: 30, opacity: 0, duration: 1.1 })
-    .from('.portada .grabado', { y: 18, opacity: 0, duration: .9 }, '-=.7')
-    .from('#titular .letra', { y: 46, opacity: 0, duration: 1,
-                               stagger: 0.018 }, '-=.6')
-    .from('.portada .filete', { scaleX: 0, duration: 1 }, '-=.7')
-    .from('.bajada', { y: 20, opacity: 0, duration: .9 }, '-=.75')
-    .from('.baja-aviso', { opacity: 0, duration: .8 }, '-=.5');
+                  onComplete: function () { listo = true; } })
+    .from('.medallon > *', { y: 22, opacity: 0, duration: 1, stagger: .1 })
+    .from('#titular .letra', { yPercent: 110, opacity: 0, duration: 1.15,
+                               stagger: .035 }, '-=.55')
+    .from('.bajo-titular > *', { y: 20, opacity: 0, duration: .9,
+                                 stagger: .12 }, '-=.7');
 
-  /* ── Parallax de las tres fotografías ──────────────────────── */
-  gsap.utils.toArray('.lamina').forEach(function (l) {
-    gsap.fromTo(l.querySelector('img'), { yPercent: -8 }, {
-      yPercent: 8, ease: 'none',
-      scrollTrigger: { trigger: l, start: 'top bottom', end: 'bottom top',
-                       scrub: true }
-    });
-    gsap.from(l.querySelector('.pie'), {
-      y: 34, opacity: 0, duration: 1, ease: 'expo.out',
-      scrollTrigger: { trigger: l, start: 'top 55%' }
-    });
-  });
-
-  /* ── Los tres actos, en horizontal ─────────────────────────
-     La sección se fija y el riel se desplaza de lado. Es la pieza
-     que convierte el argumento en recorrido. */
-  var riel = document.querySelector('.riel');
-  var horiz = gsap.to(riel, {
-    x: function () { return -(riel.scrollWidth - innerWidth); },
-    ease: 'none',
-    scrollTrigger: {
-      trigger: '#actos', start: 'top top',
-      end: function () { return '+=' + (riel.scrollWidth - innerWidth); },
-      pin: true, scrub: 0.6, invalidateOnRefresh: true
-    }
-  });
-
-  /* Cada acto revela su texto al entrar en cuadro. */
-  gsap.utils.toArray('.acto').forEach(function (a) {
-    gsap.from(a.querySelectorAll('.angosto > *'), {
-      y: 40, opacity: 0, duration: .9, stagger: .12, ease: 'expo.out',
-      scrollTrigger: { trigger: a, containerAnimation: horiz,
-                       start: 'left 62%' }
-    });
-    gsap.from(a.querySelector('.anio'), {
-      scale: .7, opacity: 0, duration: 1.4, ease: 'expo.out',
-      scrollTrigger: { trigger: a, containerAnimation: horiz,
-                       start: 'left 78%' }
-    });
-  });
-
-  /* La sentencia final, palabra por palabra */
-  var sen = document.getElementById('sentencia');
-  sen.innerHTML = sen.textContent.trim().split(/\s+/)
-    .map(function (p) { return '<span class="pal">' + p + '</span>'; }).join(' ');
-  gsap.from('#sentencia .pal', {
-    y: 26, opacity: 0, duration: .8, stagger: .05, ease: 'expo.out',
-    scrollTrigger: { trigger: '#sentencia', containerAnimation: horiz,
-                     start: 'left 60%' }
-  });
-
-  /* ── Revelados del resto ───────────────────────────────────── */
+  /* Revelados. Se excluye lo del hero, que ya entró con la línea de tiempo. */
   gsap.utils.toArray('.rev').forEach(function (el) {
-    gsap.from(el, {
-      y: 34, opacity: 0, duration: 1, ease: 'expo.out',
-      scrollTrigger: { trigger: el, start: 'top 88%' }
-    });
+    if (el.closest('.portada')) return;
+    gsap.from(el, { y: 30, opacity: 0, duration: 1, ease: 'expo.out',
+      scrollTrigger: { trigger: el, start: 'top 88%' } });
+  });
+
+  gsap.from('#sentencia .pal', { yPercent: 100, opacity: 0, duration: .8,
+    stagger: .05, ease: 'expo.out',
+    scrollTrigger: { trigger: '#sentencia', start: 'top 82%' } });
+
+  /* Parallax contenido en las láminas: la imagen respira dentro de su marco. */
+  gsap.utils.toArray('.monografia figure').forEach(function (f) {
+    gsap.fromTo(f.querySelector('img'), { scale: 1.08, yPercent: -3 },
+      { yPercent: 3, ease: 'none',
+        scrollTrigger: { trigger: f, start: 'top bottom', end: 'bottom top',
+                         scrub: true } });
   });
 
   ScrollTrigger.refresh();
